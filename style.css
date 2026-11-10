@@ -18,3 +18,6 @@
 .grid > .book:nth-child(15) { order: 3; }
 .grid > .book:nth-child(16) { order: 2; }
 .grid > .book:nth-child(17) { order: 1; }
+
+/* Bestellanfragen und rechtliche Fußzeilenlinks */
+.legal-links{display:inline-flex;gap:14px;flex-wrap:wrap;margin-left:12px}.legal-links a{color:inherit}.order-options{margin:18px 0 22px}.order-links{display:flex;gap:10px;flex-wrap:wrap}.order-button{display:inline-block;padding:10px 15px;border:1px solid #8f7460;border-radius:4px;text-decoration:none;background:#eae0d3;color:#463024}.order-button:hover{background:#e0d1bf}.order-secondary{background:transparent}.simple-legal{border-top:1px solid #bba18d;margin-top:45px;padding-top:18px;font-size:.85rem}

@@ -7,6 +7,19 @@
 <style>
 :root{--ink:#463024;--line:#a68a76;--paper:#faf6ef;--soft:#f0e5d7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 Georgia,'Times New Roman',serif}.wrap{max-width:1080px;margin:auto;padding:0 26px}header{text-align:center;padding:34px 15px 12px}h1{font-size:clamp(2rem,5vw,3.45rem);font-weight:normal;line-height:1.18;margin:0 0 8px}.motto{display:flex;align-items:center;gap:22px;justify-content:center;font-style:italic;font-size:clamp(1rem,2.3vw,1.6rem)}.motto:before,.motto:after{content:"";height:1px;width:120px;max-width:16vw;background:var(--line)}nav{border-bottom:1px solid var(--line);display:flex;justify-content:center;flex-wrap:wrap;gap:5px 18px;padding:19px 0 12px}nav a{padding:7px 12px;color:var(--ink);text-decoration:none}nav a:hover,nav a:focus{background:var(--soft)}nav a:first-child{background:var(--soft)}figure{max-width:700px;margin:40px auto 35px;text-align:center}figure img{width:100%;height:auto;display:block;border:1px solid #d6c2a8;padding:4px;background:#fffaf2}figcaption{font-size:.88rem;font-style:italic;margin-top:8px}.welcome{text-align:center;margin:30px auto 45px;max-width:820px}.welcome h2{font-weight:normal;font-size:clamp(1.9rem,4vw,2.65rem);margin:0 0 8px}.welcome p{margin:0}.section-heading{display:flex;align-items:center;gap:16px;justify-content:center;font-size:clamp(1.7rem,3.5vw,2.2rem);font-weight:normal;margin:25px 0}.section-heading:before,.section-heading:after{content:"";height:1px;background:var(--line);flex:1}.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:24px 0 75px}.tile{border:1px solid #cbb39c;border-radius:6px;padding:20px 15px;min-height:165px;text-align:center;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:12px;transition:background .2s}.tile:hover,.tile:focus{background:var(--soft)}.tile .symbol{font-size:28px;line-height:1}.tile span:last-child{font-size:1.08rem;line-height:1.35}footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;font-size:.9rem}footer a{color:inherit}@media(max-width:760px){.tiles{grid-template-columns:repeat(4,minmax(175px,1fr));overflow-x:auto}figure{margin-top:25px}}@media(max-width:440px){.tiles{grid-template-columns:repeat(4,minmax(175px,1fr))}.tile{min-height:100px}nav{gap:2px}.motto{gap:8px}}
 .verlag-foto{max-width:850px;margin:22px auto 32px}.verlag-foto img{width:100%;height:auto;display:block;border:1px solid #d6c2a8;padding:4px;background:#fffaf2}
+
+/* Verlagslogo und Erläuterungsfenster */
+.logo-hinweis{display:flex;align-items:center;justify-content:center;gap:22px;margin:45px auto 42px;padding:24px 12px;border-top:1px solid var(--line)}
+.logo-hinweis button{appearance:none;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;text-align:left;padding:4px}
+.logo-hinweis button:hover,.logo-hinweis button:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.logo-hinweis img{width:120px;max-width:28vw;height:auto;display:block}
+.logo-hinweis .logo-text{font-size:1.08rem}
+.logo-dialog{max-width:min(650px,calc(100% - 32px));border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);padding:34px 38px;box-shadow:0 10px 45px #0004;font:inherit;line-height:1.6}
+.logo-dialog::backdrop{background:#0007}
+.logo-dialog h2{font-size:1.55rem;font-weight:normal;margin:0 38px 15px 0}
+.logo-dialog p{margin:0}
+.logo-dialog .schliessen{position:absolute;right:13px;top:8px;border:0;background:transparent;color:var(--ink);font:30px/1 Georgia,serif;cursor:pointer;padding:5px 10px}
+@media(max-width:520px){.logo-hinweis{gap:12px}.logo-hinweis img{width:90px}.logo-dialog{padding:30px 23px}}
 </style>
 </head>
 <body>
@@ -23,6 +36,15 @@
 <p>Darüber hinaus erscheinen gelegentlich Publikationen zu ganz anderen Themen, beispielsweise zur japanischen Kunst, kunstvoll gestaltete Gedichtbände oder ein ausschließlich Forellenrezepten gewidmetes Kochbuch – das einzige seiner Art auf dem deutschen Buchmarkt.</p>
 <p>Die Verlegerin, <strong>Dr. Gisela Niggemann-Simon</strong>, war vor ihrer Selbstständigkeit für den Droste-Verlag und den Wilhelm Knapp Verlag in Düsseldorf sowie für den Evangelischen Presseverband Nord e. V. einschließlich der Lutherischen Verlagsgesellschaft in Kiel tätig.</p>
 <p>Wenn sie nicht gerade eine neue Publikation vorbereitet, recherchiert und schreibt sie als freie Journalistin für verschiedene Medien oder begleitet als zertifizierte Gästeführerin Besucher durch die Landeshauptstadt Dresden, ihre einzigartigen Museen und die reizvolle Umgebung.</p>
+<div class="logo-hinweis">
+  <button type="button" class="logo-oeffnen" aria-label="Erläuterung zum Verlagslogo öffnen"><img src="bilder/verlagslogo-finckenfang.png" alt="Historische Vignette mit einem Vogel auf einem Baum" loading="lazy"></button>
+  <button type="button" class="logo-oeffnen logo-text">Was es mit dem Logo des Verlages auf sich hat.</button>
+</div>
+<dialog id="logo-erklaerung" class="logo-dialog" aria-labelledby="logo-dialog-titel">
+  <button type="button" class="schliessen" aria-label="Fenster schließen">×</button>
+  <h2 id="logo-dialog-titel">Unser Verlagslogo</h2>
+  <p>Das Logo des Verlags Niggemann &amp; Simon zeigt einen Vogel auf einem Baum. Die Darstellung stammt aus einem zeitgenössischen Flugblatt mit dem Titel <em>„Gedanken über den Vogelfang bey Maxen unterm 20. und 21. Nov. 1759“</em>. Darin wird die Gefangennahme des preußischen Generals Friedrich August von Finck und seines Armeekorps während der Schlacht bei Maxen in spöttischen Versen als „Vogelfang“ geschildert. Seit dem ersten Heft schmückt diese historische Vignette sämtliche Publikationen der Reihe „Rund um den Finckenfang“.</p>
+</dialog>
 </section>
 </main>
 <footer>
@@ -32,4 +54,12 @@
 </footer>
 
 </div>
+<script>
+(function(){
+  const dialog=document.getElementById('logo-erklaerung');
+  document.querySelectorAll('.logo-oeffnen').forEach(el=>el.addEventListener('click',()=>dialog.showModal()));
+  dialog.querySelector('.schliessen').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+})();
+</script>
 </body></html>

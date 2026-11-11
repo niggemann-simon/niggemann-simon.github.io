@@ -20,6 +20,18 @@
 .logo-dialog p{margin:0}
 .logo-dialog .schliessen{position:absolute;right:13px;top:8px;border:0;background:transparent;color:var(--ink);font:30px/1 Georgia,serif;cursor:pointer;padding:5px 10px}
 @media(max-width:520px){.logo-hinweis{gap:12px}.logo-hinweis img{width:90px}.logo-dialog{padding:30px 23px}}
+/* Flugblatt: zwei gleichformatige Seiten, bei Bedarf vergrößerbar */
+.logo-dialog{width:min(1000px,calc(100% - 24px));max-width:none;max-height:90vh;overflow:auto}
+.flugblatt-seiten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.flugblatt-seiten button{display:block;width:100%;padding:0;border:1px solid var(--line);background:transparent;cursor:zoom-in}
+.flugblatt-seiten img{display:block;width:100%;height:auto}
+.flugblatt-seiten figcaption{margin-top:5px;font-size:.88rem}
+.flugblatt-seiten figure{margin:0;max-width:none}
+.bild-dialog{width:min(1100px,calc(100% - 20px));max-width:none;max-height:94vh;overflow:auto;background:var(--paper);border:1px solid var(--line);padding:35px 15px 15px;position:relative}
+.bild-dialog::backdrop{background:#000b}
+.bild-dialog img{display:block;width:100%;height:auto}
+.bild-dialog .schliessen{position:absolute;right:8px;top:2px;border:0;background:transparent;font:30px Georgia,serif;cursor:pointer;color:var(--ink)}
+@media(max-width:600px){.flugblatt-seiten{grid-template-columns:1fr;gap:22px}.logo-dialog{padding:30px 18px}}
 </style>
 </head>
 <body>
@@ -44,6 +56,14 @@
   <button type="button" class="schliessen" aria-label="Fenster schließen">×</button>
   <h2 id="logo-dialog-titel">Unser Verlagslogo</h2>
   <p>Das Logo des Verlags Niggemann &amp; Simon zeigt einen Vogel auf einem Baum. Die Darstellung stammt aus einem zeitgenössischen Flugblatt mit dem Titel <em>„Gedanken über den Vogelfang bey Maxen unterm 20. und 21. Nov. 1759“</em>. Darin wird die Gefangennahme des preußischen Generals Friedrich August von Finck und seines Armeekorps während der Schlacht bei Maxen in spöttischen Versen als „Vogelfang“ geschildert. Seit dem ersten Heft schmückt diese historische Vignette sämtliche Publikationen der Reihe „Rund um den Finckenfang“.</p>
+  <div class="flugblatt-seiten" aria-label="Historisches Flugblatt, beide Seiten">
+    <figure><button type="button" class="flugblatt-vergroessern" data-seite="1" aria-label="Erste Seite des Flugblatts vergrößern"><img src="bilder/flugblatt-maxen-1759-seite-1.png" alt="Erste Seite des Spottgedichts Gedanken über den Vogelfang bey Maxen, 1759" loading="lazy"></button><figcaption>Seite 1 – Titel und Spottverse</figcaption></figure>
+    <figure><button type="button" class="flugblatt-vergroessern" data-seite="2" aria-label="Zweite Seite des Flugblatts vergrößern"><img src="bilder/flugblatt-maxen-1759-seite-2.png" alt="Zweite Seite des Spottgedichts mit der historischen Vogelvignette" loading="lazy"></button><figcaption>Seite 2 – Schlussverse und Vignette</figcaption></figure>
+  </div>
+</dialog>
+<dialog id="flugblatt-gross" class="bild-dialog" aria-label="Vergrößerte Ansicht des Flugblatts">
+  <button type="button" class="schliessen" aria-label="Vergrößerung schließen">×</button>
+  <img id="flugblatt-gross-bild" alt="Vergrößerte Seite des historischen Flugblatts">
 </dialog>
 </section>
 </main>
@@ -60,6 +80,16 @@
   document.querySelectorAll('.logo-oeffnen').forEach(el=>el.addEventListener('click',()=>dialog.showModal()));
   dialog.querySelector('.schliessen').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+  const gross=document.getElementById('flugblatt-gross');
+  const grossBild=document.getElementById('flugblatt-gross-bild');
+  document.querySelectorAll('.flugblatt-vergroessern').forEach(button=>button.addEventListener('click',()=>{
+    const img=button.querySelector('img');
+    grossBild.src=img.src;
+    grossBild.alt=img.alt;
+    gross.showModal();
+  }));
+  gross.querySelector('.schliessen').addEventListener('click',()=>gross.close());
+  gross.addEventListener('click',event=>{if(event.target===gross)gross.close();});
 })();
 </script>
 </body></html>

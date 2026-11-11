@@ -9,11 +9,11 @@
 .verlag-foto{max-width:850px;margin:22px auto 32px}.verlag-foto img{width:100%;height:auto;display:block;border:1px solid #d6c2a8;padding:4px;background:#fffaf2}
 
 /* Verlagslogo und Erläuterungsfenster */
-.logo-hinweis{display:flex;align-items:center;justify-content:center;gap:22px;margin:45px auto 42px;padding:24px 12px;border-top:1px solid var(--line)}
+.logo-hinweis{display:flex;flex-direction:row!important;align-items:center;justify-content:center;gap:22px;margin:45px auto 42px;padding:24px 12px;border-top:1px solid var(--line)}
 .logo-hinweis button{appearance:none;border:0;background:transparent;color:var(--ink);font:inherit;cursor:pointer;text-align:left;padding:4px}
 .logo-hinweis button:hover,.logo-hinweis button:focus-visible{text-decoration:underline;text-underline-offset:4px}
 .logo-hinweis img{width:120px;max-width:28vw;height:auto;display:block}
-.logo-hinweis .logo-text{font-size:1.08rem}
+.logo-hinweis .logo-text{font-size:1.08rem;order:1!important}.logo-hinweis .logo-bild{order:2!important;flex-shrink:0}
 .logo-dialog{max-width:min(650px,calc(100% - 32px));border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);padding:34px 38px;box-shadow:0 10px 45px #0004;font:inherit;line-height:1.6}
 .logo-dialog::backdrop{background:#0007}
 .logo-dialog h2{font-size:1.55rem;font-weight:normal;margin:0 38px 15px 0}
@@ -49,8 +49,8 @@
 <p>Die Verlegerin, <strong>Dr. Gisela Niggemann-Simon</strong>, war vor ihrer Selbstständigkeit für den Droste-Verlag und den Wilhelm Knapp Verlag in Düsseldorf sowie für den Evangelischen Presseverband Nord e. V. einschließlich der Lutherischen Verlagsgesellschaft in Kiel tätig.</p>
 <p>Wenn sie nicht gerade eine neue Publikation vorbereitet, recherchiert und schreibt sie als freie Journalistin für verschiedene Medien oder begleitet als zertifizierte Gästeführerin Besucher durch die Landeshauptstadt Dresden, ihre einzigartigen Museen und die reizvolle Umgebung.</p>
 <div class="logo-hinweis">
-  <button type="button" class="logo-oeffnen" aria-label="Erläuterung zum Verlagslogo öffnen"><img src="bilder/verlagslogo-finckenfang.png" alt="Historische Vignette mit einem Vogel auf einem Baum" loading="lazy"></button>
   <button type="button" class="logo-oeffnen logo-text">Was es mit dem Logo des Verlages auf sich hat.</button>
+  <button type="button" class="logo-oeffnen logo-bild" aria-label="Erläuterung zum Verlagslogo öffnen"><img src="bilder/verlagslogo-finckenfang.png" alt="Historische Vignette mit einem Vogel auf einem Baum" loading="lazy"></button>
 </div>
 <dialog id="logo-erklaerung" class="logo-dialog" aria-labelledby="logo-dialog-titel">
   <button type="button" class="schliessen" aria-label="Fenster schließen">×</button>
